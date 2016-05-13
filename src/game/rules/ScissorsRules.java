@@ -1,13 +1,14 @@
 package game.rules;
 
-import game.BigBangTheoryGame;
 import game.Rule;
+
+import static game.Rule.PossiblePlay.*;
 
 
 public class ScissorsRules extends Rule {
     @Override
-    protected BigBangTheoryGame.PossiblePlay[] getWeakness() {
-        return new BigBangTheoryGame.PossiblePlay[]{BigBangTheoryGame.PossiblePlay.PAPER, BigBangTheoryGame.PossiblePlay.LIZARD};
+    protected PossiblePlay[] getWeakness() {
+        return new PossiblePlay[]{PAPER, LIZARD};
     }
 }
 

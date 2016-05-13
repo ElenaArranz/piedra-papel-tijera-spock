@@ -1,6 +1,7 @@
 package game;
 
 
+import game.Rule.PossiblePlay;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -8,7 +9,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static game.BigBangTheoryGame.*;
+import static game.Rule.PossiblePlay.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.runners.Parameterized.Parameters;
 
@@ -36,35 +37,35 @@ public class BigBangTheoryTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"Scissors vs. Scissors", PossiblePlay.SCISSORS, PossiblePlay.SCISSORS, DRAW},
-                {"Scissors vs. Paper", PossiblePlay.SCISSORS, PossiblePlay.PAPER, WIN_LEFT},
-                {"Scissors vs. Rock", PossiblePlay.SCISSORS, PossiblePlay.ROCK, WIN_RIGHT},
-                {"Scissors vs. Spock", PossiblePlay.SCISSORS, PossiblePlay.SPOCK, WIN_RIGHT},
-                {"Scissors vs. Lizard", PossiblePlay.SCISSORS, PossiblePlay.LIZARD, WIN_LEFT},
+                {"Scissors vs. Scissors", SCISSORS, SCISSORS, Rule.DRAW},
+                {"Scissors vs. Paper", SCISSORS, PAPER, Rule.WIN_LEFT},
+                {"Scissors vs. Rock", SCISSORS, ROCK, Rule.WIN_RIGHT},
+                {"Scissors vs. Spock", SCISSORS, SPOCK, Rule.WIN_RIGHT},
+                {"Scissors vs. Lizard", SCISSORS, LIZARD, Rule.WIN_LEFT},
 
-                {"Paper vs. Scissors", PossiblePlay.PAPER, PossiblePlay.SCISSORS, WIN_RIGHT},
-                {"Paper vs. Paper", PossiblePlay.PAPER, PossiblePlay.PAPER, DRAW},
-                {"Paper vs. Rock", PossiblePlay.PAPER, PossiblePlay.ROCK, WIN_LEFT},
-                {"Paper vs. Spock", PossiblePlay.PAPER, PossiblePlay.SPOCK, WIN_LEFT},
-                {"Paper vs. Lizard", PossiblePlay.PAPER, PossiblePlay.LIZARD, WIN_RIGHT},
+                {"Paper vs. Scissors", PAPER, SCISSORS, Rule.WIN_RIGHT},
+                {"Paper vs. Paper", PAPER, PAPER, Rule.DRAW},
+                {"Paper vs. Rock", PAPER, ROCK, Rule.WIN_LEFT},
+                {"Paper vs. Spock", PAPER, SPOCK, Rule.WIN_LEFT},
+                {"Paper vs. Lizard", PAPER, LIZARD, Rule.WIN_RIGHT},
 
-                {"Rock vs. Scissors", PossiblePlay.ROCK, PossiblePlay.SCISSORS, WIN_LEFT},
-                {"Rock vs. Paper", PossiblePlay.ROCK, PossiblePlay.PAPER, WIN_RIGHT},
-                {"Rock vs. Rock", PossiblePlay.ROCK, PossiblePlay.ROCK, DRAW},
-                {"Rock vs. Spock", PossiblePlay.ROCK, PossiblePlay.SPOCK, WIN_RIGHT},
-                {"Rock vs. Lizard", PossiblePlay.ROCK, PossiblePlay.LIZARD, WIN_LEFT},
+                {"Rock vs. Scissors", ROCK, SCISSORS, Rule.WIN_LEFT},
+                {"Rock vs. Paper", ROCK, PAPER, Rule.WIN_RIGHT},
+                {"Rock vs. Rock", ROCK, ROCK, Rule.DRAW},
+                {"Rock vs. Spock", ROCK, SPOCK, Rule.WIN_RIGHT},
+                {"Rock vs. Lizard", ROCK, LIZARD, Rule.WIN_LEFT},
 
-                {"Spock vs. Scissors", PossiblePlay.SPOCK, PossiblePlay.SCISSORS, WIN_LEFT},
-                {"Spock vs. Paper", PossiblePlay.SPOCK, PossiblePlay.PAPER, WIN_RIGHT},
-                {"Spock vs. Rock", PossiblePlay.SPOCK, PossiblePlay.ROCK, WIN_LEFT},
-                {"Spock vs. Spock", PossiblePlay.SPOCK, PossiblePlay.SPOCK, DRAW},
-                {"Spock vs. Lizard", PossiblePlay.SPOCK, PossiblePlay.LIZARD, WIN_RIGHT},
+                {"Spock vs. Scissors", SPOCK, SCISSORS, Rule.WIN_LEFT},
+                {"Spock vs. Paper", SPOCK, PAPER, Rule.WIN_RIGHT},
+                {"Spock vs. Rock", SPOCK, ROCK, Rule.WIN_LEFT},
+                {"Spock vs. Spock", SPOCK, SPOCK, Rule.DRAW},
+                {"Spock vs. Lizard", SPOCK, LIZARD, Rule.WIN_RIGHT},
 
-                {"Lizard vs. Scissors", PossiblePlay.LIZARD, PossiblePlay.SCISSORS, WIN_RIGHT},
-                {"Lizard vs. Paper", PossiblePlay.LIZARD, PossiblePlay.PAPER, WIN_RIGHT},
-                {"Lizard vs. Rock", PossiblePlay.LIZARD, PossiblePlay.ROCK, WIN_LEFT},
-                {"Lizard vs. Spock", PossiblePlay.LIZARD, PossiblePlay.SPOCK, WIN_LEFT},
-                {"Lizard vs. Lizard", PossiblePlay.LIZARD, PossiblePlay.LIZARD, DRAW},
+                {"Lizard vs. Scissors", LIZARD, SCISSORS, Rule.WIN_RIGHT},
+                {"Lizard vs. Paper", LIZARD, PAPER, Rule.WIN_RIGHT},
+                {"Lizard vs. Rock", LIZARD, ROCK, Rule.WIN_LEFT},
+                {"Lizard vs. Spock", LIZARD, SPOCK, Rule.WIN_LEFT},
+                {"Lizard vs. Lizard", LIZARD, LIZARD, Rule.DRAW},
         });
     }
 }

@@ -2,17 +2,20 @@ package game;
 
 import java.util.Arrays;
 
-import static game.BigBangTheoryGame.WIN_LEFT;
-import static game.BigBangTheoryGame.WIN_RIGHT;
-
 public abstract class Rule {
 
-    protected abstract BigBangTheoryGame.PossiblePlay[] getWeakness();
+    public static final int DRAW = 0;
+    public static final int WIN_LEFT = 1;
+    public static final int WIN_RIGHT = -1;
 
-    public int versus(BigBangTheoryGame.PossiblePlay right) {
+    protected abstract PossiblePlay[] getWeakness();
+
+    public int versus(PossiblePlay right) {
         if (Arrays.asList(getWeakness()).contains(right)) {
             return WIN_LEFT;
         }
         return WIN_RIGHT;
     }
+
+    public static enum PossiblePlay {SCISSORS, ROCK, PAPER, LIZARD, SPOCK}
 }

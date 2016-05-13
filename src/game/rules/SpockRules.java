@@ -1,12 +1,13 @@
 package game.rules;
 
-import game.BigBangTheoryGame;
 import game.Rule;
+
+import static game.Rule.PossiblePlay.*;
 
 
 public class SpockRules extends Rule {
     @Override
-    protected BigBangTheoryGame.PossiblePlay[] getWeakness() {
-        return new BigBangTheoryGame.PossiblePlay[]{BigBangTheoryGame.PossiblePlay.SCISSORS, BigBangTheoryGame.PossiblePlay.ROCK};
+    protected PossiblePlay[] getWeakness() {
+        return new PossiblePlay[]{SCISSORS, ROCK};
     }
 }

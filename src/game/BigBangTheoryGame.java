@@ -1,32 +1,29 @@
 package game;
 
+import game.Rule.PossiblePlay;
 import game.rules.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static game.Rule.PossiblePlay.*;
+
 public class BigBangTheoryGame {
-
-    public static enum PossiblePlay {SCISSORS, ROCK, PAPER, LIZARD, SPOCK}
-
-    public static final int DRAW = 0;
-    public static final int WIN_LEFT = 1;
-    public static final int WIN_RIGHT = -1;
 
     private static final Map<PossiblePlay, Class<? extends Rule>> ruleForElement = new HashMap<PossiblePlay, Class<? extends Rule>>();
 
     static {
-        ruleForElement.put(PossiblePlay.SCISSORS, ScissorsRules.class);
-        ruleForElement.put(PossiblePlay.ROCK, RockRules.class);
-        ruleForElement.put(PossiblePlay.PAPER, PaperRules.class);
-        ruleForElement.put(PossiblePlay.LIZARD, LizardRules.class);
-        ruleForElement.put(PossiblePlay.SPOCK, SpockRules.class);
+        ruleForElement.put(SCISSORS, ScissorsRules.class);
+        ruleForElement.put(ROCK, RockRules.class);
+        ruleForElement.put(PAPER, PaperRules.class);
+        ruleForElement.put(LIZARD, LizardRules.class);
+        ruleForElement.put(SPOCK, SpockRules.class);
     }
 
     ;
 
     public int play(PossiblePlay left, PossiblePlay right) {
-        if (left.equals(right)) return DRAW;
+        if (left.equals(right)) return Rule.DRAW;
 
         Rule paperRule = null;
         try {
@@ -38,6 +35,6 @@ public class BigBangTheoryGame {
             e.printStackTrace();
         }
 
-        return DRAW;
+        return Rule.DRAW;
     }
 }
