@@ -47,6 +47,24 @@ public class BigBangTheoryTest {
                 {"Paper vs. Rock",  PAPER, ROCK, WIN_LEFT},
                 {"Paper vs. Spock",  PAPER, SPOCK, WIN_LEFT},
                 {"Paper vs. Lizard",  PAPER, LIZARD, WIN_RIGHT},
+
+                {"Rock vs. Scissors",  ROCK, SCISSORS, WIN_LEFT},
+                {"Rock vs. Paper",  ROCK, PAPER, WIN_RIGHT},
+                {"Rock vs. Rock",  ROCK, ROCK, DRAW},
+                {"Rock vs. Spock",  ROCK, SPOCK, WIN_RIGHT},
+                {"Rock vs. Lizard",  ROCK, LIZARD, WIN_LEFT},
+
+                {"Spock vs. Scissors",  SPOCK, SCISSORS, WIN_LEFT},
+                {"Spock vs. Paper",  SPOCK, PAPER, WIN_RIGHT},
+                {"Spock vs. Rock",  SPOCK, ROCK, WIN_LEFT},
+                {"Spock vs. Spock",  SPOCK, SPOCK, DRAW},
+                {"Spock vs. Lizard",  SPOCK, LIZARD, WIN_RIGHT},
+
+                {"Lizard vs. Scissors",  LIZARD, SCISSORS, WIN_RIGHT},
+                {"Lizard vs. Paper",  LIZARD, PAPER, WIN_RIGHT},
+                {"Lizard vs. Rock",  LIZARD, ROCK, WIN_LEFT},
+                {"Lizard vs. Spock",  LIZARD, SPOCK, WIN_LEFT},
+                {"Lizard vs. Lizard",  LIZARD, LIZARD, DRAW},
         });
     }
 }
