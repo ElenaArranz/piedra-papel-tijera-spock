@@ -1,5 +1,7 @@
 package game;
 
+import game.rules.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,40 +43,5 @@ public class BigBangTheoryGame {
         }
 
         return DRAW;
-    }
-
-    static class ScissorsRules extends Rule {
-        @Override
-        protected String[] getWeakness() {
-            return new String[] {PAPER, LIZARD};
-        }
-    }
-
-    static class SpockRules extends Rule {
-        @Override
-        protected String[] getWeakness() {
-            return new String[] {SCISSORS, ROCK};
-        }
-    }
-
-    static class PaperRules extends Rule {
-        @Override
-        protected String[] getWeakness() {
-            return new String[] {ROCK, SPOCK};
-        }
-    }
-
-    static class RockRules extends Rule {
-        @Override
-        protected String[] getWeakness() {
-            return new String[] {SCISSORS, LIZARD};
-        }
-    }
-
-    static class LizardRules extends Rule {
-        @Override
-        protected String[] getWeakness() {
-            return new String[] {SPOCK, ROCK};
-        }
     }
 }
