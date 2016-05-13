@@ -43,57 +43,38 @@ public class BigBangTheoryGame {
         return DRAW;
     }
 
-    static class ScissorsRules implements Rule {
+    static class ScissorsRules extends Rule {
         @Override
-        public int versus(String right) {
-            if (right.equals(PAPER) || right.equals(LIZARD)) {
-                return WIN_LEFT;
-            }
-            return WIN_RIGHT;
+        protected String[] getWeakness() {
+            return new String[] {PAPER, LIZARD};
         }
     }
 
-    static class SpockRules implements Rule {
+    static class SpockRules extends Rule {
         @Override
-        public int versus(String right) {
-            if (right.equals(SCISSORS) || right.equals(ROCK)) {
-                return WIN_LEFT;
-            }
-            return WIN_RIGHT;
+        protected String[] getWeakness() {
+            return new String[] {SCISSORS, ROCK};
         }
     }
 
-    static class PaperRules implements Rule {
+    static class PaperRules extends Rule {
         @Override
-        public int versus(String right) {
-            if (right.equals(ROCK) || right.equals(SPOCK)) {
-                return WIN_LEFT;
-            }
-            return WIN_RIGHT;
+        protected String[] getWeakness() {
+            return new String[] {ROCK, SPOCK};
         }
     }
 
-    static class RockRules implements Rule {
+    static class RockRules extends Rule {
         @Override
-        public int versus(String right) {
-            if (right.equals(SCISSORS) || right.equals(LIZARD)) {
-                return WIN_LEFT;
-            }
-            return WIN_RIGHT;
+        protected String[] getWeakness() {
+            return new String[] {SCISSORS, LIZARD};
         }
     }
 
-    static class LizardRules implements Rule {
+    static class LizardRules extends Rule {
         @Override
-        public int versus(String right) {
-            if (right.equals(ROCK) || right.equals(SPOCK)) {
-                return WIN_LEFT;
-            }
-            return WIN_RIGHT;
+        protected String[] getWeakness() {
+            return new String[] {SPOCK, ROCK};
         }
-    }
-
-    interface Rule {
-        public int versus(String right);
     }
 }
