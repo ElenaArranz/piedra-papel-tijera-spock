@@ -7,29 +7,25 @@ import java.util.Map;
 
 public class BigBangTheoryGame {
 
-    public static final String SCISSORS = "SCISSORS";
-    public static final String ROCK = "ROCK";
-    public static final String PAPER = "PAPER";
-    public static final String LIZARD = "LIZARD";
-    public static final String SPOCK = "SPOCK";
+    public static enum PossiblePlay {SCISSORS, ROCK, PAPER, LIZARD, SPOCK}
 
     public static final int DRAW = 0;
     public static final int WIN_LEFT = 1;
     public static final int WIN_RIGHT = -1;
 
-    private static final Map<String, Class<? extends Rule>> ruleForElement = new HashMap<String, Class<? extends Rule>>();
+    private static final Map<PossiblePlay, Class<? extends Rule>> ruleForElement = new HashMap<PossiblePlay, Class<? extends Rule>>();
 
     static {
-        ruleForElement.put(SCISSORS, ScissorsRules.class);
-        ruleForElement.put(ROCK, RockRules.class);
-        ruleForElement.put(PAPER, PaperRules.class);
-        ruleForElement.put(LIZARD, LizardRules.class);
-        ruleForElement.put(SPOCK, SpockRules.class);
+        ruleForElement.put(PossiblePlay.SCISSORS, ScissorsRules.class);
+        ruleForElement.put(PossiblePlay.ROCK, RockRules.class);
+        ruleForElement.put(PossiblePlay.PAPER, PaperRules.class);
+        ruleForElement.put(PossiblePlay.LIZARD, LizardRules.class);
+        ruleForElement.put(PossiblePlay.SPOCK, SpockRules.class);
     }
 
     ;
 
-    public int play(String left, String right) {
+    public int play(PossiblePlay left, PossiblePlay right) {
         if (left.equals(right)) return DRAW;
 
         Rule paperRule = null;
