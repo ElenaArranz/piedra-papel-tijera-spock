@@ -16,65 +16,51 @@ public class BigBangTheoryGame {
     public static final int WIN_RIGHT = -1;
 
     private static final Map<String, Class<?extends Rule>> ruleForElement = new HashMap<String,Class<?extends Rule>>();
-    static {ruleForElement.put(PAPER, PaperRules.class);
+    static {
+        ruleForElement.put(SCISSORS, ScissorsRules.class);
+        ruleForElement.put(ROCK, RockRules.class);
+        ruleForElement.put(PAPER, PaperRules.class);
+        ruleForElement.put(LIZARD, LizardRules.class);
+        ruleForElement.put(SPOCK, SpockRules.class);
     };
 
     public int play(String left, String right){
-        if (left.equals(right)) {
-            return DRAW;
-        } else if (left.equals(PAPER)) {
-            // return new PaperRules().versus(right);
-            Rule paperRule = null;
-            try {
-                paperRule = ruleForElement.get(left).newInstance();
-                return paperRule.versus(right);
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
+        if (left.equals(right)) return DRAW;
+
+        Rule paperRule = null;
+        try {
+            paperRule = ruleForElement.get(left).newInstance();
+            return paperRule.versus(right);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        return DRAW;
+    }
+
+    static class ScissorsRules implements Rule {
+        @Override
+        public int versus(String right) {
+            if (right.equals(PAPER) || right.equals(LIZARD)) {
+                return WIN_LEFT;
             }
-        } else if (left.equals(ROCK)) {
-            return rockVs(right);
-        } else if (left.equals(LIZARD)) {
-            return lizzardVs(right);
-        } else if (left.equals(SPOCK)) {
-            return spockVs(right);
-        } else if (left.equals(SCISSORS)) {
-            return scissorsVs(right);
-        }
-        return WIN_LEFT;
-    }
-
-    private int scissorsVs(String right) {
-        if (right.equals(ROCK) || right.equals(SPOCK)) {
             return WIN_RIGHT;
         }
-        return WIN_LEFT;
     }
 
-    private int rockVs(String right) {
-        if (right.equals(PAPER)) {
+    static class SpockRules implements Rule {
+        @Override
+        public int versus(String right) {
+            if (right.equals(SCISSORS) || right.equals(ROCK)) {
+                return WIN_LEFT;
+            }
             return WIN_RIGHT;
         }
-        return WIN_LEFT;
-    }
-
-    private int spockVs(String right) {
-        if (right.equals(SCISSORS)) {
-            return WIN_LEFT;
-        }
-        return WIN_RIGHT;
-    }
-
-    private int lizzardVs(String right) {
-        if (right.equals(SPOCK)) {
-            return WIN_LEFT;
-        }
-        return WIN_RIGHT;
     }
 
     static class PaperRules implements Rule {
-
         @Override
         public int versus(String right) {
             if (right.equals(ROCK) || right.equals(SPOCK)) {
@@ -84,8 +70,17 @@ public class BigBangTheoryGame {
         }
     }
 
-    static class LizzardRules implements Rule {
+    static class RockRules implements Rule {
+        @Override
+        public int versus(String right) {
+            if (right.equals(SCISSORS) || right.equals(LIZARD)) {
+                return WIN_LEFT;
+            }
+            return WIN_RIGHT;
+        }
+    }
 
+    static class LizardRules implements Rule {
         @Override
         public int versus(String right) {
             if (right.equals(ROCK) || right.equals(SPOCK)) {
